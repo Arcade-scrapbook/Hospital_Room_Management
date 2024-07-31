@@ -1,0 +1,54 @@
+public class paitent extends util {
+    static String nameb = "";
+    static String docb = "";
+    static String issueb = "";
+    static String amtb = "";
+    static String name[];
+    static String doc[];
+    static String issue[];
+    static double amt[];
+
+    static int mp = 0;
+    static String col[] = { "Name", "Doctor", "Ammount", "Issue" };
+
+    InputStreamReader r=new InputStreamReader(System.in);  
+    BufferedReader sc=new BufferedReader(r);
+    String docname[] = { "Dr. Jagdish Patil", "Dr. Surbhi Anand", "Dr. Sanjay Sachdeva" };
+
+    int main_paitent() throws IOException{
+
+        try {
+            InputStreamReader r=new InputStreamReader(System.in);  
+            BufferedReader sc=new BufferedReader(r);
+            paitent ob = new paitent();
+
+            ob.print("", 0);
+            ob.rec();
+            System.out.println();
+            System.out.println(
+                "1. Enter Data\n2. Patient List\n3. Patient list based on doctor\n4. Patient based on ammount\n5. Enter Q to return to Home Screen");
+            String in = sc.readLine();
+            if (in.equalsIgnoreCase("Q")){
+                println("", 0);
+                return 1;
+            }
+
+            int t = Integer.parseInt(in);
+            if (t == 1)
+                ob.input();
+            else if (t == 2)
+                ob.display();
+            else if (t == 3) {
+                ob.println(
+                    "Please choose doctors name:\n1. Dr. Jagdish Patil\n2. Dr. Surbhi Anand\n3. Dr. Sanjay Sachdeva",
+                    0);
+                ob.display(ob.docname[Integer.parseInt(sc.readLine()) - 1]);
+            } else if (t == 4) {
+                System.out.println("Please ammont to be filtered");
+                ob.display(Integer.parseInt(sc.readLine()));
+            } else
+                main_paitent();
+
+        } 
+        }
+        }
