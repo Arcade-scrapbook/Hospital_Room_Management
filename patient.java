@@ -1,3 +1,4 @@
+import java.io.*;
 public class paitent extends util {
     static String nameb = "";
     static String docb = "";
@@ -49,6 +50,56 @@ public class paitent extends util {
             } else
                 main_paitent();
 
-        } 
+        } catch (Exception e) {
+            paitent ob = new paitent();
+            ob.err();
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException ie) {
+
+            }
+            try {
+                ob.re(100);
+            } catch (InterruptedException ie) {
+            }
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException ie) {
+
+            }
+            System.out.println("\f");
+            main_paitent();
         }
+        return 1;
+    }
+
+    public void input()throws IOException {
+        println("Enter Name of Paitent", 0);
+        String n = sc.readLine();
+        println("Please choose doctors name:\n1. Dr. Jagdish Patil\n2. Dr. Surbhi Anand\n3. Dr. Sanjay Sachdeva");
+        String dn = docname[Integer.parseInt(sc.readLine()) - 1];
+        println("Enter Issue of The Patient");
+        String i = sc.readLine();
+        println("Enter Fee charged");
+        String a = sc.readLine();
+        boolean check = false;
+        println("Are you sure abbout the data enter\n1. Yes\n2. No", 0);
+        println(n + "\t\t" + dn + "\t\t" + i + "\t\t" + a);
+        if (Integer.parseInt(sc.readLine()) == 2)
+            input();
+        else {
+
+            nameb += n + ":";
+            docb += dn + ":";
+            issueb += i + ":";
+            amtb += a + ":";
+            refresh();
+            println("Data Entered Successfully", 0);
+            println("Press Enter to continue.... \nEnter q to quit");
         }
+        if (sc.readLine().equalsIgnoreCase("Q"))
+            main_paitent();
+        else
+            input();
+    }
+}
