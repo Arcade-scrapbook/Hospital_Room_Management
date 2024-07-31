@@ -102,4 +102,107 @@ public class paitent extends util {
         else
             input();
     }
+    
+    public void display()throws IOException {
+        int c = 0;
+        print("", 0);
+
+        for (int i = 0; i < nameb.length(); i++) {
+            if (nameb.charAt(i) == ':')
+                c++;
+        }
+        if (c == 0)
+            println("No Data Found", 0);
+        else {
+            max();
+            top();
+            for (int i = 0; i < c; i++) {
+                System.out
+                .print("\n|" + printt(name[i]) + printt(doc[i]) + printt("" + amt[i] + "") + printt(issue[i]));
+            }
+            line();
+        }
+        sc.readLine();
+        main_paitent();
+    }
+
+    public void display(String d) throws IOException{
+        print("", 0);
+        int c = 0;
+        for (int i = 0; i < nameb.length(); i++) {
+
+            if (nameb.charAt(i) == ':')
+                c++;
+        }
+        int t = 0;
+        for (int i = 0; i < c; i++)
+
+            if (doc[i].equalsIgnoreCase(d))
+                t++;
+
+        if (t == 0)
+            println("No Data Found", 0);
+        else {
+            max();
+            top();
+            for (int i = 0; i < c; i++)
+
+                if (doc[i].equalsIgnoreCase(d)) {
+                    System.out.print("\n|" + printt(name[i]) + printt(doc[i]) + printt("" + amt[i]) + printt(issue[i]));
+                }
+            line();
+        }
+        sc.readLine();
+        main_paitent();
+    }
+
+    public void display(int a)throws IOException {
+        print("", 0);
+        int c = 0;
+        int t = 0;
+
+        for (int i = 0; i < nameb.length(); i++)
+            if (nameb.charAt(i) == ':')
+                c++;
+
+        for (int i = 0; i < c; i++)
+            if (amt[i] == a)
+                t++;
+
+        if (t == 0)
+            println("No Data Found", 0);
+        else {
+            max();
+            top();
+            for (int i = 0; i < c; i++)
+                if (amt[i] == a) {
+                    System.out.print("\n|" + printt(name[i]) + printt(doc[i]) + printt("" + amt[i]) + printt(issue[i]));
+                }
+            line();
+        }
+        sc.readLine();
+        main_paitent();
+    }
+
+    public void refresh() {
+        int c = 0;
+
+        for (int i = 0; i < nameb.length(); i++) {
+            if (nameb.charAt(i) == ':')
+                c++;
+        }
+        name = new String[c];
+        doc = new String[c];
+        issue = new String[c];
+        amt = new double[c];
+        String wd = "";
+        for (int i = 0, w = 0; i < nameb.length(); i++) {
+            if (nameb.charAt(i) != ':')
+                wd += nameb.charAt(i);
+            else {
+                name[w] = wd;
+                wd = "";
+                w++;
+            }
+        }
 }
