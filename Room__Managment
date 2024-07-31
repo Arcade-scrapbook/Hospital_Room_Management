@@ -1,0 +1,68 @@
+public class Room__Managment extends paitent {
+        static String b[]={"█","█","░","░","░","░","░","░","░","░","░","░","░","░","░","░","█","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░"};
+        static String room_na[];
+        static int no[]={101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125
+            ,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150
+            ,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175
+            ,176,177,178,179,180//genral
+    
+            ,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225
+            ,226,227,228,229,230//semi
+    
+            ,301,302,303,304,305,306,307,308,309,310//special
+    
+            ,401,402,403,404,405};
+    
+        static String name[]={"Tejas","Jagdish","","","","","","","","","","","","","","","HI","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
+        static int fc[]={0,25,55,75,85};
+        static int fcbt[]={0,20,40,60,70,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126};
+        static int fcb[]= {0,0,0,0,0,0,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4};    
+        static String floor[]={"First Floor","Second Floor","Third Floor","Fourth Floor"};
+        static int mr=0;
+        static String room[]={"Genral Ward 1","Genral Ward 2","Genral Ward 3","ICU 1","ICU 2"
+            ,"Semi-Special Room 1","Semi-Special Room 2","Semi-Special Room 3","Semi-Special Room 4","Semi-Special Room 5"
+            ,"Semi-Special Room 6","Semi-Special Room 7","Semi-Special Room 8","Semi-Special Room 9","Semi-Special Room 10"
+            ,"Semi-Special Room 11","Semi-Special Room 12","Semi-Special Room 13","Semi-Special Room 14","Semi-Special Room 15"
+            ,"Special Room 1","Special Room 2","Special Room 3","Special Room 4","Special Room 5"
+            ,"Special Room 6","Special Room 7","Special Room 8","Special Room 9","Special Room 10"
+            ,"Delux Room 1","Delux Room 2","Delux Room 3","Delux Room 4","Delux Room 5"
+            };
+        InputStreamReader r=new InputStreamReader(System.in);  
+        BufferedReader sc=new BufferedReader(r);
+    
+        public int room_main()throws IOException{
+            InputStreamReader r=new InputStreamReader(System.in);  
+            BufferedReader sc=new BufferedReader(r);
+            Room__Managment ob=new Room__Managment();
+            int truee=1;
+            while(truee==1){
+                ob.print("",0);
+                ob.bed();
+                
+                ob.refresher();
+                ob.println("What would you like to do?");
+                ob.println("1. Display All Data");
+                ob.println("2. List All Booked Beds");
+                ob.println("3. List Vacant Bed");
+                ob.println("4. Book Bed");
+                ob.println("5. Enter Q to return to Home Screen");
+    
+                String c=sc.readLine();
+                if(c.equalsIgnoreCase("Q"))
+                    return 1;
+                int ch= Integer.valueOf(c);
+                ob.print("",0);
+                if(ch==1)
+                    ob.display();
+                else if(ch==2)
+                    ob.displayb();
+                else if(ch==3)
+                    ob.displayl();
+                else if(ch==4)
+                    ob.book();
+                
+            }
+            return 1;
+            
+        }
+}
