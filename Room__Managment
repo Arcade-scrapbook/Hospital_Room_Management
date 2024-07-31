@@ -65,4 +65,92 @@ public class Room__Managment extends paitent {
             return 1;
             
         }
+void refresher(){
+               
+               String t[]={"General Ward 1","General Ward 2","General Ward 3","ICU 1","ICU 2"
+            ,b[0]+" "+b[1]+" "+b[2]+" "+b[3]+" "+b[4]+" "    ,b[5]+" "+b[6]+" "+b[7]+" "+b[8]+" "+b[9]+" "    ,b[10]+" "+b[11]+" "+b[12]+" "+b[13]+" "+b[14]+" "    ,b[15]+" "+b[16]+" "+b[17]+" "+b[18]+" "+b[19]+" "    ,b[20]+" "+b[21]+" "+b[22]+" "+b[23]+" "+b[24]
+            ,b[25]+" "+b[26]+" "+b[27]+" "+b[28]+" "+b[29]+" ",b[30]+" "+b[31]+" "+b[32]+" "+b[33]+" "+b[34]+" ",b[35]+" "+b[36]+" "+b[37]+" "+b[38]+" "+b[39]+" "," "," "
+            ,b[39]+" "+b[40]+" "+b[41]+" "+b[42]+" "+b[43]+" ",b[44]+" "+b[45]+" "+b[46]+" "+b[47]+" "+b[48]+" ",b[49]+" "+b[50]+" "+b[51]+" "+b[52]+" "+b[53]+" "," "," "
+            ,b[54]+" "+b[55]+" "+b[56]+" "+b[57]+" "+b[58]+" ",b[59]+" "+b[60]+" "+b[61]+" "+b[62]+" "+b[63]+" ",b[64]+" "+b[65]+" "+b[66]+" "+b[67]+" "+b[68]+" "," "," "
+    
+            ,"Semi-Special Room 1","Semi-Special Room 2","Semi-Special Room 3","Semi-Special Room 4","Semi-Special Room 5"
+            ,b[69]+" "+b[70]+" ",b[71]+" "+b[72]+" ",b[73]+" "+b[74]+" ",b[75]+" "+b[76]+" ",b[77]+" "+b[78]
+            ,"Semi-Special Room 6","Semi-Special Room 7","Semi-Special Room 8","Semi-Special Room 9","Semi-Special Room 10"
+            ,b[79]+" "+b[80]+" ",b[81]+" "+b[82]+" ",b[83]+" "+b[84]+" ",b[85]+" "+b[86]+" ",b[87]+" "+b[88]
+            ,"Semi-Special Room 11","Semi-Special Room 12","Semi-Special Room 13","Semi-Special Room 14","Semi-Special Room 15"
+            ,b[89]+" "+b[90]+" ",b[91]+" "+b[92]+" ",b[93]+" "+b[94]+" ",b[95]+" "+b[96]+" ",b[97]+" "+b[98]
+    
+            ,"Special Room 1","Special Room 2","Special Room 3","Special Room 4","Special Room 5"
+            ,b[99],b[100],b[101],b[102],b[103]
+            ,"Special Room 6","Special Room 7","Special Room 8","Special Room 9","Special Room 10"
+            ,b[104],b[105],b[106],b[107],b[108]
+            ,"Delux Room 1","Delux Room 2","Delux Room 3","Delux Room 4","Delux Room 5"
+            ,b[109],b[110],b[111],b[112],b[113]};
+            room_na=new String[85];
+            for(int i=0;i<85;i++)
+                room_na[i]=t[i];
+        }
+    
+        public void display()throws IOException{//to display
+    
+            max();
+            for (int i=0;i<floor.length;i++){
+    
+                line();
+                print("\n|");
+                if(floor[i].length()%2!=0)
+                    floor[i]+=" ";
+    
+                for (int j = 0; j < (((6*mr)-6) - floor[i].length())/2; j++)
+                    print(" ");
+                print(floor[i]);
+                for (int j = 0; j < (((6*mr)-6) - floor[i].length())/2; j++)
+                    print(" ");
+                print("|");
+                line();
+                print("\n|");
+                int k=0;
+                for (int j=fc[i];j<room_na.length&&j<fc[i+1];j++){
+    
+                    if(check(j)){
+                        print(printt(room_na[j]));
+                    }
+                    else{
+                        print("\n|"+printt(room_na[j]));
+    
+                    }
+                }
+                line();
+                print("\n\n\n");
+            }
+            sc.readLine();
+        }
+    
+        public void line() {
+            print("\n+");
+    
+            for (int i = 0; i < (mr) + 2; i++)
+                print("-");
+            print("+");
+            for (int i = 0; i < floor.length; i++) {
+    
+                for (int j = 0; j < (mr) + 2; j++)
+                    print("-");
+                print("+");
+            }
+        }
+    
+        public void line(int m,int n) {
+            print("\n+");
+    
+            for (int i = 0; i < (m) + 2; i++)
+                print("-");
+            print("+");
+            for (int i = 0; i < n; i++) {
+    
+                for (int j = 0; j < (m) + 2; j++)
+                    print("-");
+                print("+");
+            }
+        }
 }
