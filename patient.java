@@ -102,7 +102,7 @@ public class paitent extends util {
         else
             input();
     }
-    
+
     public void display()throws IOException {
         int c = 0;
         print("", 0);
@@ -205,4 +205,86 @@ public class paitent extends util {
                 w++;
             }
         }
+        for (int i = 0, w = 0; i < docb.length(); i++) {
+            if (docb.charAt(i) != ':')
+                wd += docb.charAt(i);
+            else {
+                doc[w] = wd;
+                wd = "";
+                w++;
+            }
+        }
+        for (int i = 0, w = 0; i < issueb.length(); i++) {
+            if (issueb.charAt(i) != ':')
+                wd += issueb.charAt(i);
+            else {
+                issue[w] = wd;
+                wd = "";
+                w++;
+            }
+        }
+        for (int i = 0, w = 0; i < amtb.length(); i++) {
+            if (amtb.charAt(i) != ':')
+                wd += amtb.charAt(i);
+            else {
+                amt[w] = Integer.parseInt(wd);
+                wd = "";
+                w++;
+            }
+        }
+    }
+
+    public void max() {
+        /***************** For max *********************/
+        for (int i = 0; i < col.length; i++)// columbes max
+            if (col[i].length() > mp)
+                mp = col[i].length();
+
+        for (int i = 0; i < name.length; i++)// name max
+            if (name[i].length() > mp)
+                mp = name[i].length();
+
+        for (int i = 0; i < doc.length; i++)// doc max
+            if (doc[i].length() > mp)
+                mp = doc[i].length();
+
+        for (int i = 0; i < issue.length; i++)// issue max
+            if (issue[i].length() > mp)
+                mp = issue[i].length();
+    }
+
+    public void top() {
+        /**************** Printing top *********************/
+        line();
+        System.out.print("\n|");
+        for (int i = 0; i < col.length; i++) {
+            System.out.print(" " + col[i]);
+            for (int j = 0; j < (mp + 1) - col[i].length(); j++)
+                System.out.print(" ");
+            System.out.print("|");
+        }
+        line();
+    }
+
+    public void line() {
+        System.out.print("\n+");
+
+        for (int i = 0; i < (mp) + 2; i++)
+            System.out.print("-");
+        System.out.print("+");
+        for (int i = 0; i < col.length - 1; i++) {
+
+            for (int j = 0; j < (mp) + 2; j++)
+                System.out.print("-");
+            System.out.print("+");
+        }
+    }
+
+    public String printt(String s) {
+        String t = " " + s + " ";
+        for (int i = 0; i < mp - s.length(); i++)
+            t += " ";
+        t += "|";
+        return t;
+    }
 }
