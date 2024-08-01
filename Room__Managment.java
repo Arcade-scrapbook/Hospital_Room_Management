@@ -153,4 +153,84 @@ void refresher(){
                 print("+");
             }
         }
+        public void max(){
+            for (int i = 0; i < room_na.length; i++)// columbes max
+                if (room_na[i].length() > mr)
+                    mr = room_na[i].length();
+            for (int i = 0; i < floor.length; i++)// columbes max
+                if (floor[i].length() > mr)
+                    mr = floor[i].length();
+        }
+    
+        public String printt(String s) {
+            max();
+            String t="";
+            if(s.length()==10)
+                t=s + " ";
+            else if(s.length()==3)
+                t=s;
+            else
+                t=" "+s+" ";
+            for (int i = 0; i < mr - s.length(); i++)
+                t += " ";
+    
+            t += "|";
+            return t;
+        }
+    
+        public String printt(String s,int m) {
+    
+            String t="";
+    
+            t=" "+s+" ";
+            for (int i = 0; i < m - s.length(); i++)
+                t += " ";
+    
+            t += "|";
+            return t;
+        }
+    
+        boolean check(int j){
+    
+            if(j==0 || j%5!=0)
+                return true;
+            for (int i=0;i<fc.length;i++)
+                if(fc[i]==j)
+                    return true;
+            return false;
+        }
+    
+        boolean check(int j ,int c){
+    
+            if(j==0 || j%5!=0)
+                return true;
+            for (int i=0;i<fcbt.length;i++)
+                if(fcbt[i]==j)
+                    return true;
+            return false;
+        }
+    
+        void book()throws IOException{
+            println("Enter Bed No.",0);
+            int i=Integer.parseInt(sc.readLine ());
+            if(bedno(i)==-1)
+                println ("Unable to book bed no."+bedno(i),0);
+            else
+                i=bedno(i);
+            println("Enter Name of Patient");
+            String name=sc.readLine();/******************************************************************
+    
+             **/
+            if(b[i].equals("░")){
+                this.b[i]="█";
+                this.name[i]=(name);
+                println ("Bed no."+no[i]+" booked for "+this.name[i],0);  
+            }
+            else{
+                println ("bed no."+no[i]+" is already booked",0);
+    
+            }
+            sc.readLine();
+        }
+
 }
