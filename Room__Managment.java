@@ -1,4 +1,6 @@
-public class Room__Managment extends paitent {
+    import java.io.*;
+    
+    public class Room__Managment extends paitent {
         static String b[]={"█","█","░","░","░","░","░","░","░","░","░","░","░","░","░","░","█","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░","░"};
         static String room_na[];
         static int no[]={101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125
@@ -65,7 +67,7 @@ public class Room__Managment extends paitent {
             return 1;
             
         }
-void refresher(){
+        void refresher(){
                
                String t[]={"General Ward 1","General Ward 2","General Ward 3","ICU 1","ICU 2"
             ,b[0]+" "+b[1]+" "+b[2]+" "+b[3]+" "+b[4]+" "    ,b[5]+" "+b[6]+" "+b[7]+" "+b[8]+" "+b[9]+" "    ,b[10]+" "+b[11]+" "+b[12]+" "+b[13]+" "+b[14]+" "    ,b[15]+" "+b[16]+" "+b[17]+" "+b[18]+" "+b[19]+" "    ,b[20]+" "+b[21]+" "+b[22]+" "+b[23]+" "+b[24]
@@ -153,6 +155,7 @@ void refresher(){
                 print("+");
             }
         }
+    
         public void max(){
             for (int i = 0; i < room_na.length; i++)// columbes max
                 if (room_na[i].length() > mr)
@@ -232,5 +235,96 @@ void refresher(){
             }
             sc.readLine();
         }
-
-}
+    
+        int bedno(int number) {
+            int first = 0;
+            int last = no.length - 1;
+            int middle = (first + last) / 2;
+    
+            while (first <= last) {
+                if (no[middle] < number) {
+                    first = middle + 1;
+                } else if (no[middle] == number) {
+                    return middle;
+                } else {
+                    last = middle - 1;
+                }
+                middle = (first + last) / 2;
+            }
+            return -1;
+        }
+    
+        void displayb()throws IOException{
+            int m=0;
+            for (int i = 0; i < name.length; i++)
+                if (name[i].length() > m)
+                    m = name[i].length();
+            if("Bed no.".length()>m)
+                m="Bed no.".length();
+            if("Name".length()>m)
+                m="Name".length();
+            line(m,1);
+            print("\n|" + printt("Bed no.",m) + printt("Name",m));
+            line(m,1);
+            for (int i=0;i<114;i++){
+                if(!name[i].equals(""))
+                    print("\n|"+printt(""+no[i],m)+printt(name[i],m));
+            }
+            line(m,1);
+            sc.readLine();
+        }
+    
+        void displayl()throws IOException{
+    
+            max();
+            for (int i=0;i<room.length;i++){
+    
+                line();
+                print("\n|");
+                if(room[i].length()%2!=0)
+                    room[i]+=" ";
+    
+                for (int j = 0; j < (((6*mr)-6) - room[i].length())/2; j++)
+                    print(" ");
+                print(room[i]);
+                for (int j = 0; j < (((6*mr)-6) - room[i].length())/2; j++)
+                    print(" ");
+                print("|");
+                line();
+                print("\n|");
+                int k=0;
+    
+                for (int j=fcbt[i];j<no.length&&j<fcbt[i+1];j++){
+                    if(j<77){
+                        if(check(j,1)){
+                            if(b[j]!="█")
+                                print(printt((no[j]+""),this.mr));
+                            else
+                                print(printt("NA",this.mr));
+                        }
+                        else{
+                            if(b[j]!="█")
+                                print("\n|"+printt((no[j]+""),this.mr));
+                            else
+    
+                                print("\n|"+printt("NA",this.mr));
+                        }
+                    }
+                    else{
+                        if(b[j]!="█")
+                            print(printt(no[j]+"",this.mr));
+                        else
+                            print(printt("NA",this.mr));
+    
+                    }
+    
+                }
+                for(int s=0;s<(fcb[i]);s++)  
+    
+                    print(printt("",this.mr));
+                line();
+                print("\n\n\n");
+            }
+            sc.readLine();
+        }
+    }
